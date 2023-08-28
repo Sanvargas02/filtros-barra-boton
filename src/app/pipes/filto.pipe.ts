@@ -4,14 +4,14 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'filto'
 })
 export class FiltoPipe implements PipeTransform {
-
+  //Pipe para filtrar por texto
   //El primer elemnto nos lo trae del html lo modifica y lo retorna mostrando sólo lo que se lista
-  transform(posts: any[], filterPost: string): any[] {
+  transform(filteredItems: any[], filterPost: string): any[] {
     if (!filterPost) {
-      return posts;
+      return filteredItems;
     }
     filterPost = filterPost.toLowerCase();
-    return posts.filter(post => post.title.toLowerCase().includes(filterPost));
+    return filteredItems.filter(filteredItem => filteredItem.title.toLowerCase().includes(filterPost));
   }
 
 }
