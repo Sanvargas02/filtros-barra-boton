@@ -12,6 +12,7 @@ export class FiltoPipe implements PipeTransform {
     }
     filterPost = filterPost.toLowerCase();
     return filteredItems.filter(filteredItem => filteredItem.title.toLowerCase().includes(filterPost));
+
   }
 
 }

@@ -90,6 +90,7 @@ export class BarraFiltroComponent {
       this.filteredItems = this.posts;
     } else {
       // En caso de que seleccione otros valores se debe crear un arreglo nuevo con sólo los elementos que llevan ese o esos valores e imprimirlos en el html.
+      //USAMOS FILTEREDITEMS PARA CONSERVAR LOS CAMBIOS DEL PRIMER FILTRADO
       this.filteredItems = this.posts.filter((item) => {
         return item.ciudad.toLowerCase() === value;
       });
