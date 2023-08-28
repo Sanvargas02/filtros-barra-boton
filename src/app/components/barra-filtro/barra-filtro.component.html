@@ -15,14 +15,29 @@
   <!-- Espacio de búsqueda en botónes -->
   <div>
     <div>
-      <div> <!-- Botónes para filtrar por opción -->
-        <select (change)="applyFilter($event)">
+      <div> <!-- Botónes para filtrar por opción, filtrando varios elementos -->
+        <select (change)="applyFilterServices($event)">
           <option value="todos">Todos</option>
           <option value="Hotel">Hotel</option>
           <option value="Restaurante">Restaurante</option>
           <option value="Motel">Motel</option>
           <option value="Hoyo feo">Hoyo feo</option>
           <option value="Cancha">Cancha</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <!-- Espacio de búsqueda en botónes -->
+  <div>
+    <div>
+      <div> <!-- Botónes para filtrar por opción, un elemento -->
+        <select (change)="applyFilterElement($event)">
+          <option value="todos">Todos</option>
+          <option value="Neiva">Neiva</option>
+          <option value="Garzon">Garzon</option>
+          <option value="Gigante">Gigante</option>
+          <option value="Tarqui">Tarqui</option>
+          <option value="Hobo">Hobo</option>
         </select>
       </div>
     </div>
