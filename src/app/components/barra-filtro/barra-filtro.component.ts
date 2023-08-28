@@ -16,45 +16,58 @@ export class BarraFiltroComponent {
       id: 1,
       title: 'La Carreta',
       date: '02/04/2023',
-      service: 'hotel'
+      services: ['hotel', 'Hoyo feo']
     },
     {
       id: 2,
       title: 'Paragón Plaza',
       date: '02/04/2022',
-      service: 'Restaurante'
+      services: ['Restaurante']
     },
     {
       id: 3,
       title: 'Carne a la Llanera',
       date: '02/04/2021',
-      service: 'motel'
+      services: ['motel', 'Hoyo feo']
     },
     {
       id: 4,
       title: 'Otro restaurant',
       date: '02/04/2020',
-      service: 'Hoyo feo'
+      services: ['Hoyo feo', 'Cancha']
     },
     {
       id: 5,
       title: 'Ultima búsqueda',
       date: '02/04/2019',
-      service: 'Cancha'
+      services: ['Cancha']
     }
   ]
 
   //Pasamos todo nuestros datos a un arreglo nuevo para trabajarlo e imprimirlo en html
+  //Esto para no alterar el arreglo original
   filteredItems: any[] = this.posts;
 
   //Función para filtrar por medio del botón
   applyFilter(selectedCategory: any) {
-    let value = selectedCategory.target.value; // Obtenemos el valor seleccionado en el html
-    value = value.toLowerCase(); //Los valores de las opciones pasan a minúsculas para comparar
+    let value = selectedCategory.target.value; // Obtenemos el valor seleccionado en el html.
+    value = value.toLowerCase(); // Los valores de las opciones pasan a minúsculas para comparar.
+    // Iniciamos indicando que si el valor seleccionado en el botón coincide con el texto el arreglo se mantiene igual a todos los datos traidos desde el back.
     if (value === 'todos') {
       this.filteredItems = this.posts;
     } else {
-      this.filteredItems = this.posts.filter(item => item.service.toLowerCase() === value);
+      // En caso de que seleccione otros valores se debe crear un arreglo nuevo con sólo los elementos que llevan ese o esos valores e imprimirlos en el html.
+      this.filteredItems = this.posts.filter(item => {
+        // Empezamos a evaluar en este caso los servicios que es mi arreglo de elementos que deseo filtrar
+        for (const servicio of item.services) {
+          if (servicio.toLowerCase() === value) {
+            return true; //Retornamos el caso de éxito para filter(), se incluye el elemento actual
+          }
+        }
+        return false; //Aseguramos que luego del for se retorne algo en caso de que ningún elemento coincida
+        //Aseguramos un retorno
+      }
+      );
     }
   }
 
