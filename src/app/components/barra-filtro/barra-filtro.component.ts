@@ -59,42 +59,48 @@ export class BarraFiltroComponent {
   //Esto para no alterar el arreglo original
   filteredItems: any[] = this.posts;
 
+  //Propiedad para el Pipe en el filtro por botón
+  value: string = 'todos'; //Almacena el valor de la opción que se elija en el botón a filtrar.
+
+  //Propiedad para el Pipe en el filtro por botón
+  value2: string = 'todos'; //Almacena el valor de la opción que se elija en el botón a filtrar.
+
   //Función para filtrar por medio del botón
   applyFilterServices(selectedCategory: any) {
-    let value = selectedCategory.target.value; // Obtenemos el valor seleccionado en el html.
-    value = value.toLowerCase(); // Los valores de las opciones pasan a minúsculas para comparar.
+    this.value = selectedCategory.target.value; // Obtenemos el valor seleccionado en el html.
+    this.value = this.value.toLowerCase(); // Los valores de las opciones pasan a minúsculas para comparar.
     // Iniciamos indicando que si el valor seleccionado en el botón coincide con el texto el arreglo se mantiene igual a todos los datos traidos desde el back.
-    if (value === 'todos') {
-      this.filteredItems = this.posts;
-    } else {
-      // En caso de que seleccione otros valores se debe crear un arreglo nuevo con sólo los elementos que llevan ese o esos valores e imprimirlos en el html.
-      this.filteredItems = this.posts.filter((item) => {
-        // Empezamos a evaluar en este caso los servicios que es mi arreglo de elementos que deseo filtrar
-        for (const servicio of item.services) {
-          if (servicio.toLowerCase() === value) {
-            return true; //Retornamos el caso de éxito para filter(), se incluye el elemento actual
-          }
-        }
-        return false; //Aseguramos que luego del for se retorne algo en caso de que ningún elemento coincida
-        //Aseguramos un retorno
-      });
-    }
+    // if (this.value === 'todos') {
+    //   this.filteredItems = this.posts;
+    // } else {
+    //   // En caso de que seleccione otros valores se debe crear un arreglo nuevo con sólo los elementos que llevan ese o esos valores e imprimirlos en el html.
+    //   this.filteredItems = this.posts.filter((item) => {
+    //     // Empezamos a evaluar en este caso los servicios que es mi arreglo de elementos que deseo filtrar
+    //     for (const servicio of item.services) {
+    //       if (servicio.toLowerCase() === this.value) {
+    //         return true; //Retornamos el caso de éxito para filter(), se incluye el elemento actual
+    //       }
+    //     }
+    //     return false; //Aseguramos que luego del for se retorne algo en caso de que ningún elemento coincida
+    //     //Aseguramos un retorno
+    //   });
+    // }
   } //Fin Función applyFilterServices
 
   //Función para filtrar por medio del botón
   applyFilterElement(selectedCategory: any) {
-    let value = selectedCategory.target.value; // Obtenemos el valor seleccionado en el html.
-    value = value.toLowerCase(); // Los valores de las opciones pasan a minúsculas para comparar.
+    this.value2 = selectedCategory.target.value; // Obtenemos el valor seleccionado en el html.
+    this.value2 = this.value2.toLowerCase(); // Los valores de las opciones pasan a minúsculas para comparar.
     // Iniciamos indicando que si el valor seleccionado en el botón coincide con el texto el arreglo se mantiene igual a todos los datos traidos desde el back.
-    if (value === 'todos') {
-      this.filteredItems = this.posts;
-    } else {
-      // En caso de que seleccione otros valores se debe crear un arreglo nuevo con sólo los elementos que llevan ese o esos valores e imprimirlos en el html.
-      //USAMOS FILTEREDITEMS PARA CONSERVAR LOS CAMBIOS DEL PRIMER FILTRADO
-      this.filteredItems = this.posts.filter((item) => {
-        return item.ciudad.toLowerCase() === value;
-      });
-    }
+    // if (this.value === 'todos') {
+    //   this.filteredItems = this.posts;
+    // } else {
+    //   // En caso de que seleccione otros valores se debe crear un arreglo nuevo con sólo los elementos que llevan ese o esos valores e imprimirlos en el html.
+    //   //USAMOS FILTEREDITEMS PARA CONSERVAR LOS CAMBIOS DEL PRIMER FILTRADO
+    //   this.filteredItems = this.posts.filter((item) => {
+    //     return item.ciudad.toLowerCase() === this.value;
+    //   });
+    // }
   } //Fin Función applyFilterServices
 
 }

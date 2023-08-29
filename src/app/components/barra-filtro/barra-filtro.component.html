@@ -55,7 +55,7 @@
            </tr>
         </thead>
         <!-- Contendio Dinámico -->
-        <tbody *ngFor="let post of filteredItems | filto:filterPost">
+        <tbody *ngFor="let post of filteredItems | filto:filterPost | botonesFiltro:value | botonElemento:value2">
           <tr>
             <td>{{post.id}}</td>
             <td>{{post.title}}</td>

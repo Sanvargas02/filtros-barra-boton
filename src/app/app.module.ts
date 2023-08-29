@@ -7,12 +7,16 @@ import { BarraFiltroComponent } from './components/barra-filtro/barra-filtro.com
 import { FiltoPipe } from './pipes/filto.pipe';
 
 import { FormsModule } from '@angular/forms';
+import { BotonesFiltroPipe } from './pipes/botones-filtro.pipe';
+import { BotonElementoPipe } from './pipes/boton-elemento.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     BarraFiltroComponent,
-    FiltoPipe
+    FiltoPipe,
+    BotonesFiltroPipe,
+    BotonElementoPipe
   ],
   imports: [
     BrowserModule,
